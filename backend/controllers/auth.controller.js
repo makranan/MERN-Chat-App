@@ -2,6 +2,7 @@ import bcrypt from 'bcryptjs';
 import User from '../models/user.model.js';
 import generateTokenAndSetCookie from '../utils/generateToken.js';
 
+// SIGNUP CONTROLLER
 export const signup = async (req, res) => {
   try {
     // DESTRUCTURE REQUEST BODY
@@ -53,15 +54,54 @@ export const signup = async (req, res) => {
       res.status(400).json({ error: 'Invalid user data' });
     }
   } catch (error) {
-    console.log('Signup error:', error.message);
+    console.log('Signup controller error:', error.message);
     res.status(500).json({ error: 'Something went wrong' });
   }
 };
 
-export const login = (req, res) => {
-  res.send('Login user');
+// LOGIN CONTROLLER
+export const login = async (req, res) => {
+  try {
+    // DESTRUCTURE REQUEST BODY
+    const { username, password } = req.body;
+    // FIND USER
+    const user = await User.findOne({ username });
+    // VALIDATE USER
+    const validPassword =
+      user && (await bcrypt.compare(password, user?.password || ''));
+
+    if (!user || !validPassword) {
+      return res.status(400).json({ error: 'Invalid username or password' });
+    }
+
+    // GENERATE JWT TOKEN
+    generateTokenAndSetCookie(user.id, res);
+
+    // SEND USER DATA
+    res.status(200).json({
+      _id: user.id,
+      fullName: user.fullName,
+      username: user.username,
+      profilePic: user.profilePic,
+    });
+  } catch (error) {
+    console.log('Login controller error:', error.message);
+    res.status(500).json({ error: 'Something went wrong' });
+  }
 };
 
+// LOGOUT CONTROLLER
 export const logout = (req, res) => {
-  res.send('Logout user');
+  try {
+    res.clearCookie('jwt', {
+      httpOnly: true,
+      sameSite: 'strict',
+      secure: process.env.NODE_ENV !== 'development',
+    });
+
+    res.status(200).json({ message: 'Logged out successfully' });
+  } catch (error) {
+    console.log('Logout controller error:', error.message);
+    res.status(500).json({ error: 'Something went wrong' });
+  }
 };
