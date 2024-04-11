@@ -4,7 +4,7 @@ import LogoutButton from './LogoutButton';
 
 const Sidebar = () => {
   return (
-    <div>
+    <div className='p-2 overflow-auto flex flex-col'>
       <SearchInput />
       <div className='divider px-3' />
       <ConversationList />

@@ -1,4 +1,4 @@
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   return (
@@ -19,7 +19,6 @@ const Login = () => {
               className='w-full input input-bordered h-10'
             />
           </div>
-
           <div>
             <label className='label p-2'>
               <span className='text-base label-text'>Password</span>
@@ -30,21 +29,17 @@ const Login = () => {
               className='w-full input input-bordered h-10'
             />
           </div>
-
-          {/* <Link>
-            <span className='text-sm text-blue-400'>Forgot password?</span>
-          </Link>
-
-          <Link>
-            <span className='text-sm text-blue-400'>
+          <div className='my-4'>
+            <Link
+              to='/signup'
+              className='text-sm hover:underline text-blue-400'
+            >
               Don&apos;t have an account?
-            </span>
-          </Link> */}
+            </Link>
+          </div>
 
           <div>
-            <button className='btn btn-primary btn-sm w-full mt-4'>
-              Login
-            </button>
+            <button className='btn btn-primary btn-sm w-full'>Login</button>
           </div>
         </form>
       </div>

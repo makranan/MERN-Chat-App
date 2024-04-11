@@ -6,13 +6,6 @@ const ConversationList = () => {
       <Conversation />
       <Conversation />
       <Conversation />
-      <Conversation />
-      <Conversation />
-      <Conversation />
-      <Conversation />
-      <Conversation />
-      <Conversation />
-      <Conversation />
     </div>
   );
 };
