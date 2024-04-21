@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useSignUp from '../../hooks/useSignUp';
+import AppName from '../../components/appname/AppName';
 
 import GenderPicker from './GenderPicker';
 
@@ -27,8 +28,11 @@ const SignUp = () => {
   return (
     <div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
       <div className='w-full p-6 rounded-lg shadow-md  bg-zinc-900 bg-clip-padding '>
-        <h1 className='text-xl font-semibold text-center'>
-          Sign Up <span className='text-green-400'>ChatApp</span>
+        <h1 className='flex justify-center text-xl font-semibold text-center'>
+          Sign Up
+          <span>
+            <AppName />
+          </span>
         </h1>
 
         <form onSubmit={handleSubmit}>
