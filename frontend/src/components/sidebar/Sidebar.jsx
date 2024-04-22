@@ -6,14 +6,14 @@ import LogoutButton from './LogoutButton';
 const Sidebar = () => {
   return (
     <div className='p-2 overflow-auto flex flex-col'>
-      <div className='flex justify-start mb-2'>
+      <div className='flex justify-between mb-2'>
         <AppName />
+        <LogoutButton />
       </div>
 
       <SearchInput />
       <div className='divider px-3' />
       <ConversationList />
-      <LogoutButton />
     </div>
   );
 };
