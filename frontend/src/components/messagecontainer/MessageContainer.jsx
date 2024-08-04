@@ -2,10 +2,14 @@ import MessageList from './MessageList';
 import MessageInput from './MessageInput';
 import useConversation from '../../zustand/useConversation';
 import { useEffect } from 'react';
+import { useAuthContext } from '../../context/AuthContext';
 
 const NoChatSelected = () => {
+  const { authState } = useAuthContext();
+
   return (
-    <div className='flex items-center justify-center h-full'>
+    <div className='flex items-center justify-center h-full flex-col'>
+      <p className='text-white font-bold text-xl'>Hi {authState.fullName}!</p>
       <p className='text-gray-400'>Select a chat to start messaging</p>
     </div>
   );
