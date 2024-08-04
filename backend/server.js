@@ -1,3 +1,4 @@
+import { app, io, server } from './socket/socket.js';
 import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
@@ -9,7 +10,6 @@ import userRoutes from './routes/user.routes.js';
 import connectDB from './db/connect.db.js';
 dotenv.config();
 
-const app = express();
 const PORT = process.env.PORT;
 
 app.use(express.json()); // to parse incoming requests with JSON payloads
@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   connectDB();
   console.log(`Server is running on port ${PORT}`);
 });
