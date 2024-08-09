@@ -15,7 +15,7 @@ const MessageList = () => {
   }, [messages]);
 
   return (
-    <div className='px-1 flex-1 overflow-auto'>
+    <div className='px-1 flex-1 overflow-auto bg-neutral-800'>
       {!loading &&
         messages.length > 0 &&
         messages.map((message) => (

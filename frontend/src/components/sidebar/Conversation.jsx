@@ -1,17 +1,19 @@
 import { useSocketContext } from '../../context/SocketContext';
 import useConversation from '../../zustand/useConversation';
+import useGetConversations from '../../hooks/useGetConversations';
+import { useState } from 'react';
 
 const Conversation = ({ conversation, lastIdx }) => {
   const { selectedConversation, setSelectedConversation } = useConversation();
   const { onlineStatus } = useSocketContext();
   const isOnline = onlineStatus.includes(conversation._id);
-
   const isSelected = selectedConversation?._id === conversation._id;
+
   return (
     <>
       <div
-        className={`flex gap-2 items-center hover:bg-slate-800 rounded p-2 py-1 cursor-pointer
-        ${isSelected ? 'bg-slate-800' : ''}
+        className={`flex gap-2 items-center hover:bg-orange-800 rounded p-2 py-1 cursor-pointer
+        ${isSelected ? 'bg-orange-800' : ''}
         `}
         onClick={() => setSelectedConversation(conversation)}
       >

@@ -16,7 +16,7 @@ const MessageInput = () => {
   };
 
   return (
-    <form className='my-3' onSubmit={handleSubmit}>
+    <form className='' onSubmit={handleSubmit}>
       <div className='w-full relative'>
         <input
           type='text'
@@ -34,7 +34,7 @@ const MessageInput = () => {
           ) : (
             <img
               src={sendMessageIcon}
-              className='h-6 w-6 filter invert grayscale opacity-20'
+              className='h-6 w-6 filter invert text-green-500'
               alt='send message'
             />
           )}
