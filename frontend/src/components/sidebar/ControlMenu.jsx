@@ -7,7 +7,7 @@ const ControlMenu = () => {
     <div className='flex flex-col justify-between h-full'>
       <div className='rotate-90'>{/* <AppName /> */}</div>
       <div className='px-2'>
-        <ProfileButton />
+        {/* <ProfileButton /> */}
         <LogoutButton />
       </div>
     </div>
